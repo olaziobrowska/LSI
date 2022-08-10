@@ -1,0 +1,31 @@
+<p-calendar [(ngModel)]="dateValue" (onSelect)="fetchDates()"  [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
+
+<div *ngIf="currencies.length > 0" class="card">
+  <h5>Kurs PLN</h5>
+  <p-table  [value]="currencies[0].rates">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="code">Symbol waluty
+          <p-sortIcon field="code"></p-sortIcon>
+        </th>
+        <th pSortableColumn="currency">Waluta
+          <p-sortIcon field="currency"></p-sortIcon>
+        </th>
+        <th pSortableColumn="mid">Kurs waluty
+          <p-sortIcon field="mid"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-currency>
+      <tr>
+        <td>{{currency.code}}</td>
+        <td>{{currency.currency}}</td>
+        <td>{{currency.mid}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div>
+  Wybierz widok:
+</div>
+
