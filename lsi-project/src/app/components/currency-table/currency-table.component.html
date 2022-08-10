@@ -1,4 +1,4 @@
-<p-calendar [(ngModel)]="dateValue" (onSelect)="fetchDates()"  [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
+<p-calendar [maxDate]="maxDate" [(ngModel)]="dateValue" (onSelect)="fetchDates()"  [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
 
 <div *ngIf="currencies.length > 0" class="card">
   <h5>Kurs PLN</h5>

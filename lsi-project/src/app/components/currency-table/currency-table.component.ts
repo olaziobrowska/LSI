@@ -9,6 +9,7 @@ import {Currency} from "../../currency";
 })
 export class CurrencyTableComponent implements OnInit {
   dateValue = new Date();
+  maxDate = new Date();
 
   currencies: Currency[] = [];
 
