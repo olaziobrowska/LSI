@@ -15,6 +15,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SelectButtonModule} from "primeng/selectbutton";
 import {MultiSelectModule} from "primeng/multiselect";
 import {DialogModule} from "primeng/dialog";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -32,6 +36,9 @@ import {DialogModule} from "primeng/dialog";
     SelectButtonModule,
     MultiSelectModule,
     DialogModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [CurrencyServiceService, DatePipe],
   bootstrap: [AppComponent]
