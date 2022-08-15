@@ -1,0 +1,86 @@
+<div>
+  <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+          (click)="clear()"></button>
+  <p-calendar placeholder="YYYY-MM-DD" [(ngModel)]="dateValue" (onSelect)="fetchDates()"
+              [showIcon]="true" (change)="fetchDates()"
+              dateFormat="yy-mm-dd">
+  </p-calendar>
+  <p-dialog *ngIf="display" header="Brak notowań dla wybranego dnia" [(visible)]="display">
+    Proszę podać inną datę!
+  </p-dialog>
+</div>
+
+<div *ngIf="currencies?.length > 0" class="card">
+  <h5>Kurs PLN</h5>
+  <p-table [value]="currencies[0].rates" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+           [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="code">Symbol waluty
+          <p-sortIcon field="code"></p-sortIcon>
+          <p-columnFilter field="code" matchMode="in" display="menu" [showMatchModes]="false"
+                          [showClearButton]="false" [showApplyButton]="false" [showOperator]="false"
+                          [showAddButton]="false">
+            <ng-template pTemplate="filter">
+              <p-multiSelect [(ngModel)]="selectedMid" [options]="allRates" placeholder="All"
+                             (onChange)="filterCodeValue()" selectedItemsLabel="{0} items selected" optionLabel="code">
+                <ng-template let-curr pTemplate="item">
+                  <div class="p-multiselect-representative-option">
+                    <span class="p-ml-1">{{curr.code}}</span>
+                  </div>
+                </ng-template>
+              </p-multiSelect>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+        <th pSortableColumn="currency">Waluta
+          <p-sortIcon field="currency"></p-sortIcon>
+          <p-columnFilter field="currency" matchMode="in" display="menu" [showMatchModes]="false"
+                          [showClearButton]="false" [showApplyButton]="false" [showOperator]="false"
+                          [showAddButton]="false">
+            <ng-template pTemplate="filter">
+              <p-multiSelect [(ngModel)]="selectedMid" [options]="allRates" placeholder="All"
+                             (onChange)="filterCurrencyValue()" selectedItemsLabel="{0} items selected"
+                             optionLabel="currency">
+                <ng-template let-curr pTemplate="item">
+                  <div class="p-multiselect-representative-option">
+                    <span class="p-ml-1">{{curr.currency}}</span>
+                  </div>
+                </ng-template>
+              </p-multiSelect>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+        <th pSortableColumn="mid">Kurs waluty
+          <p-sortIcon field="mid"></p-sortIcon>
+          <p-columnFilter field="mid" matchMode="in" display="menu" [showMatchModes]="false"
+                          [showClearButton]="false" [showApplyButton]="false" [showOperator]="false"
+                          [showAddButton]="false">
+            <ng-template pTemplate="filter">
+              <p-multiSelect [(ngModel)]="selectedMid" [options]="allRates" placeholder="All"
+                             (onChange)="filterMidValue()" selectedItemsLabel="{0} items selected" optionLabel="mid">
+                <ng-template let-curr pTemplate="item">
+                  <div class="p-multiselect-representative-option">
+                    <span class="p-ml-1">{{curr.mid}}</span>
+                  </div>
+                </ng-template>
+              </p-multiSelect>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-currency>
+      <tr>
+        <td>{{currency.code}}</td>
+        <td>{{currency.currency}}</td>
+        <td>{{currency.mid}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<h5>Wybierz widok</h5>
+<p-selectButton [options]="stateOptions" [(ngModel)]="value1" optionLabel="label" optionValue="value"
+                (onChange)="changeColor()"></p-selectButton>
+
