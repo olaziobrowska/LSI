@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CurrencyTableComponent } from './currency-table.component';
+import {CurrencyTableComponent} from './currency-table.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {DatePipe} from "@angular/common";
 
 describe('CurrencyTableComponent', () => {
   let component: CurrencyTableComponent;
@@ -8,9 +10,10 @@ describe('CurrencyTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CurrencyTableComponent ]
+      imports: [HttpClientTestingModule],
+      providers: [DatePipe]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

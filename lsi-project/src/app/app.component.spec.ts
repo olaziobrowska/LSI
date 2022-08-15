@@ -30,6 +30,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('lsi-project app is running!');
+    expect(compiled.querySelector('h2')?.textContent).toContain('Kurs walut PLN');
   });
 });

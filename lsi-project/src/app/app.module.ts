@@ -13,6 +13,8 @@ import {CurrencyServiceService} from "./services/currency-service.service";
 import {DatePipe} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SelectButtonModule} from "primeng/selectbutton";
+import {MultiSelectModule} from "primeng/multiselect";
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import {SelectButtonModule} from "primeng/selectbutton";
     HttpClientModule,
     FormsModule,
     SelectButtonModule,
+    MultiSelectModule,
+    DialogModule,
   ],
   providers: [CurrencyServiceService, DatePipe],
   bootstrap: [AppComponent]
